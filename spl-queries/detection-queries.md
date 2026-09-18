@@ -1,10 +1,8 @@
 # Splunk Detection & Investigation Queries
 
-This file contains the core SPL searches used during the SOC lab
-for detection, investigation, and threat hunting.
+This file contains the core SPL searches used during the SOC lab for detection, investigation, and threat hunting.
 
-All searches were executed against the authorized, isolated lab
-environment.
+All searches were executed against the authorized, isolated lab environment.
 
 ---
 
@@ -76,7 +74,7 @@ index=wineventlogs sourcetype="WinEventLog:Security" EventCode=4688 "notepad.exe
 index=wineventlogs sourcetype="WinEventLog:Security" EventCode=4688 "P5-Simulation"
 ```
 
-**Investigation:** Inspect the command line for:
+**Investigation Indicator:**
 
 ```text
 -ExecutionPolicy Bypass
@@ -112,7 +110,7 @@ index=ubuntu_logs "CRON" "cron-Proof.txt"
 index=ubuntu_logs "sudo" "p7" "/usr/bin/id"
 ```
 
-**Purpose:** Investigate sudo activity associated with the controlled privilege-escalation scenario.
+**Purpose:** Investigate sudo activity associated with the controlled privilege-related scenario.
 
 ---
 
@@ -126,7 +124,7 @@ index=wineventlogs EventCode=4663
 | where file_events>=5 AND unique_files>=2
 ```
 
-**Purpose:** Detect abnormal file modification activity involving multiple files within a short time window.
+**Purpose:** Detect abnormal file activity involving multiple files within a short time window.
 
 ---
 
@@ -153,13 +151,21 @@ index=wineventlogs OR index=ubuntu_logs
 
 # Detection Workflow
 
-Endpoint Activity  
-→ Log Generation  
-→ Universal Forwarder  
-→ Splunk Index  
-→ SPL Detection Search  
-→ Alert  
-→ Analyst Investigation
+```text
+Endpoint Activity
+        ↓
+Log Generation
+        ↓
+Universal Forwarder
+        ↓
+Splunk Index
+        ↓
+SPL Detection Search
+        ↓
+Alert
+        ↓
+Analyst Investigation
+```
 
 ---
 
@@ -172,10 +178,10 @@ Endpoint Activity
 
 # Lab Disclaimer
 
-All activity represented in these searches was performed in an
-authorized and isolated cybersecurity lab environment.
+All activity represented in these searches was performed in an authorized and isolated cybersecurity lab environment.
 
-The scenarios were controlled simulations for SOC detection,
-investigation, and incident-response training.
+The scenarios were controlled simulations for SOC detection, investigation, and incident-response training.
 
-They should not be interpreted as a single real-world attack chain.
+They should not be interpreted as a single real-world attack or compromise.
+
+The queries are provided as documentation of the detection and investigation methods used in the lab.

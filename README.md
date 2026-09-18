@@ -9,21 +9,27 @@ The lab includes Windows 10 and Ubuntu 24.04 endpoints sending security
 and system logs to a centralized Splunk server for monitoring, detection,
 investigation, and incident response.
 
+---
+
 ## 🏗️ Architecture
 
+```text
 Windows 10 Endpoint
         │
         ├── Splunk Universal Forwarder
         │
         ▼
-     Splunk Server
+   Splunk Server
         ▲
         │
 Ubuntu 24.04 Endpoint
         │
         └── Splunk Universal Forwarder
+```
 
-Logs are forwarded to Splunk over TCP port 9997.
+Logs are forwarded to Splunk over TCP port `9997`.
+
+---
 
 ## 🛠️ Technologies & Tools
 
@@ -35,67 +41,171 @@ Logs are forwarded to Splunk over TCP port 9997.
 - MITRE ATT&CK
 - Windows Event Logs
 - Linux Authentication Logs
+- ClamAV
+- PowerShell
+
+---
 
 ## 🔍 Security Scenarios
 
-The project covers controlled lab simulations including:
+The project covers controlled cybersecurity lab simulations:
 
-- Authentication brute-force
-- Phishing URL simulation
-- EICAR malware testing
-- Suspicious process execution
-- PowerShell activity
-- Scheduled task / cron persistence
-- Sudo privilege escalation
-- Ransomware-like file activity
-- IOC threat hunting
-- Cross-scenario investigation
+| Scenario | Security Activity |
+|---|---|
+| P-1 | Authentication Brute-Force |
+| P-2 | Phishing URL Simulation |
+| P-3 | EICAR Test Artifact Detection |
+| P-4 | Suspicious Process Execution |
+| P-5 | PowerShell Execution Policy Bypass |
+| P-6 | Scheduled Task / Cron Persistence |
+| P-7 | Sudo Privilege-Related Activity |
+| P-8 | Rapid File-Change Activity |
+| P-9 | IOC Threat Hunting |
+| P-10 | Cross-Scenario Investigation |
+
+---
 
 ## 🚨 Detection & Monitoring
 
-The Splunk environment contains real-time detection rules and alerts
-covering authentication, phishing, malware, process activity,
-PowerShell, persistence, privilege escalation, and suspicious
-file-change behavior.
+The Splunk environment contains detection rules and alerts covering:
+
+- Failed authentication attempts
+- Phishing simulation indicators
+- EICAR test artifact detection
+- Process creation
+- PowerShell activity
+- Scheduled-task and cron persistence
+- Sudo activity
+- Rapid file-change activity
+- IOC investigation
+- Cross-scenario correlation
+
+---
 
 ## 🔎 Investigation Process
 
-1. Alert generation
-2. Log analysis
-3. SPL-based investigation
-4. Timeline reconstruction
-5. IOC investigation
-6. MITRE ATT&CK mapping
-7. Severity assessment
-8. Containment
-9. Eradication
-10. Recovery
-11. Lessons learned
+```text
+Alert Generation
+       ↓
+Log Analysis
+       ↓
+SPL Investigation
+       ↓
+Timeline Reconstruction
+       ↓
+IOC Investigation
+       ↓
+MITRE ATT&CK Mapping
+       ↓
+Severity Assessment
+       ↓
+Containment
+       ↓
+Eradication
+       ↓
+Recovery
+       ↓
+Lessons Learned
+```
+
+---
 
 ## 📊 Key Outcomes
 
 - Centralized Windows and Linux log collection
-- SOC monitoring dashboard
+- Splunk-based SOC monitoring
 - Real-time detection alerts
-- SPL-based investigation
+- SPL-based security investigation
+- Detection engineering
+- IOC threat hunting
 - Incident response documentation
-- Threat hunting and IOC analysis
 - MITRE ATT&CK mapping
+- Security-event timeline analysis
+
+---
+
+## 📂 Repository Structure
+
+```text
+splunk-soc-monitoring-incident-response/
+│
+├── detection-rules/
+│   ├── P1-failed-login.md
+│   ├── P2-phishing-detection.md
+│   ├── P3-eicar-detection.md
+│   ├── P4-suspicious-process.md
+│   ├── P5-powershell-detection.md
+│   ├── P6-persistence-detection.md
+│   ├── P7-privilege-escalation.md
+│   └── P8-file-change-detection.md
+│
+├── evidence/
+│   ├── P1-authentication/
+│   ├── P2-phishing/
+│   ├── P3-eicar/
+│   ├── P4-suspicious-process/
+│   ├── P5-powershell/
+│   ├── P6-persistence/
+│   ├── P7-privilege-escalation/
+│   └── P8-file-change/
+│
+├── screenshots/
+│   ├── P1/
+│   ├── P2/
+│   ├── P3/
+│   ├── P4/
+│   ├── P5/
+│   ├── P6/
+│   ├── P7/
+│   └── P8/
+│
+├── spl-queries/
+│   └── detection-queries.md
+│
+└── README.md
+```
+
+---
+
+## 📖 Documentation
+
+Detailed detection logic, SPL queries, investigation evidence,
+screenshots, and scenario documentation are available in the repository.
+
+### Detection Rules
+
+The `detection-rules` directory contains the documented detection logic
+for scenarios P-1 through P-8.
+
+### SPL Queries
+
+The `spl-queries` directory contains the SPL searches used for detection,
+investigation, and threat hunting.
+
+### Evidence
+
+The `evidence` directory contains scenario-specific investigation
+documentation.
+
+### Screenshots
+
+The `screenshots` directory contains visual evidence collected from the
+SOC lab.
+
+---
 
 ## ⚠️ Lab Disclaimer
 
 All activities were performed in an isolated and authorized lab
 environment for cybersecurity training and detection engineering.
 
-No production systems, external targets, or real threat actors were
-involved.
+The scenarios were controlled simulations and should not be interpreted
+as real-world attacks or compromises.
 
-## 📚 Documentation
+No production systems or external targets were involved.
 
-Detailed investigation findings, evidence, screenshots, detection
-logic, and incident response documentation will be provided in this
-repository.
+---
 
 ## 👨‍💻 Author
 
-Vivek Maurya
+**Vivek Maurya**
